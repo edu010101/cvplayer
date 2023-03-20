@@ -1,0 +1,10 @@
+QPushButton{
+    border-image: url('opencvplayer/icons/FastRewind.png');
+    background:transparent; 
+       
+}
+QPushButton:hover {
+    background-color: rgba(206, 197, 197, 0.103);
+}
+
+

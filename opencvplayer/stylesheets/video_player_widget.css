@@ -1,0 +1,4 @@
+QWidget{
+    background-color: rgba(28,28,28,255);
+    /* background-color: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:1.04, fx:0.50431, fy:0.495, stop:0 rgba(120,120,120,255), stop:1  rgba(40,40,40,255)); */
+}
