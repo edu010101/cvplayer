@@ -20,13 +20,7 @@ class VideoPlayer():
         self.current_time = time.time()
 
         self.custom_class = custom_class
-        
-
-#comand to install pytorch 1.13
-#pip install torch==1.3.1 torchvision==0.4.2 -f https://download.pytorch.org/whl/torch_stable.html
-
-
-        
+                
     def play_video(self) -> None:
         self.video_updater.start_time_updater()
 
@@ -83,8 +77,6 @@ class VideoPlayer():
         self.video_updater.add_method_on_timer_updater('update_viewer', self.custom_method)
         self.video_updater.add_method_on_timer_updater('update_viewe', self.show_frame)
         self.video_updater.add_method_on_timer_updater('update_ui_elements', self.update_ui_elements_each_second)
-        
-
         
         self.video_updater.add_method_on_signal_updater('jump_to_frame', self.video.update_to_specific_video_moment)
         self.video_updater.add_method_on_signal_updater('update_viewer', self.custom_method)

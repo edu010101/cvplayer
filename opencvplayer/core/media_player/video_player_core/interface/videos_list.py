@@ -16,9 +16,9 @@ class VideosList(QComboBox):
         self.populate_video_dict(videos_path)
         self.currentIndexChanged.connect(self.change_video)
 
-    def change_video(self, video_name):
-        self.current_video = self.videos_dict[video_name]
-        self.video_player.change_video(self.current_video)
+    def change_video(self, video_index):
+        self.current_video = self.videos_dict[self.currentText()]
+        self.video_player.set_video(self.current_video)
 
     def populate_video_dict(self, videos_path):
         self.clear()
@@ -29,6 +29,8 @@ class VideosList(QComboBox):
             video_name = os.path.basename(video_path)
             self.addItem(video_name)
             self.videos_dict[video_name] = video_path
+
+        print(self.videos_dict)
 
     def check_video_path(self, video_path):
         if not os.path.exists(video_path):

@@ -27,7 +27,7 @@ class VideoPlayerWidget(QWidget):
         self.vertical_layout = QVBoxLayout(self)
         self.horizontal_layout = QHBoxLayout()
         
-        #self.videos_list = VideosList(self.video_player, self.videos_path, self.vertical_layout) 
+        self.videos_list = VideosList(self.video_player, ['/media/eduardo/HD 2tb/Downloads/HD Simulado/MS-112/MS-112_C_01_R0/MS-112_C_02_R0.mp4', '/media/eduardo/HD 2tb/Downloads/HD Simulado/MS-112/MS-112_C_01_R0/MS-112_C_01_R0.mp4'], self.vertical_layout)
         self.image_viewer = ImageViewer(self.vertical_layout)
         self.vertical_layout.addLayout(self.horizontal_layout)
         
@@ -36,7 +36,6 @@ class VideoPlayerWidget(QWidget):
         self.next_frame_button = NextFrameButton(self.video_player,self.horizontal_layout)
         self.video_slider = VideoSlider(self.video_player,self.horizontal_layout)
         self.time_counter = TimeCounter(self.video_player,self.horizontal_layout)
-        self.videos_list = VideosList(self.video_player, ['/media/eduardo/HD 2tb/Downloads/HD Simulado/MS-112/MS-112_C_01_R0/MS-112_C_02_R0.mp4', '/media/eduardo/HD 2tb/Downloads/HD Simulado/MS-112/MS-112_C_01_R0/MS-112_C_01_R0.mp4'], self.horizontal_layout)
         self.video_speed_button = VideoSpeedButton(self.video_player,self.horizontal_layout)
 
 
