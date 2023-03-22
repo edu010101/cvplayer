@@ -5,20 +5,10 @@ import time
 
 
 class VideoPlayer():
-    def __init__(self, video: Video = None, custom_class=None, viewer = None, time_counter = None, slider = None, play = None) -> None:
-        
-        ###TALVEZ SAIA
+    def __init__(self, video: Video = None, custom_class=None) -> None:
         self.video = video
-        self.viewer = viewer
-        self.time_counter = time_counter
-        self.slider = slider
-        self.play = play
-        self.start  = time.time()
-        self.end = time.time()
-
         self.create_video_updater()
         self.current_time = time.time()
-
         self.custom_class = custom_class
                 
     def play_video(self) -> None:
@@ -48,6 +38,12 @@ class VideoPlayer():
     
     def set_video(self, video: Video):
         self.video = video
+        self.video_updater.stop_time_updater()
+        self.video.update_to_next_video_moment()
+        
+        self.change_frame(0)
+        self.slider.set_range(self.video.total_number_of_frames)
+        self.update_ui_elements()
     
     def update_ui_elements_each_second(self):
         if self.current_time + 1 < time.time():

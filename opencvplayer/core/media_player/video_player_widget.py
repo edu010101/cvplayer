@@ -9,25 +9,22 @@ from mmdet.apis import inference_detector, init_detector
 
 
 class VideoPlayerWidget(QWidget):
+    
     def __init__(self, videos_path: str= '/media/eduardo/HD 2tb/Downloads/HD Simulado') -> None:
         super().__init__()
         start_widget_basics(self, None, 'opencvplayer/stylesheets/video_player_widget.css', minimum_height=300, minimum_width=300)
+        self.video = Video('opencvplayer/core/utils/default.mp4')
         self.videos_path = videos_path
-        #self.videos_manager = VideosManager(self)
-        self.video = Video('/media/eduardo/HD 2tb/Downloads/HD Simulado/MT-251/MT-251-T1_C_01_R0/MT-251-T1_C_01_R0.mp4')
-        custom_class = CustomBase()
-
-        self.video_player = VideoPlayer(self.video, custom_class)
+        self.custom_class = CustomBase()
+        self.video_player = VideoPlayer(self.video, self.custom_class)
         self.build_ui_elements()
-        self.video_player.add_ui_elements(self.image_viewer, self.time_counter, self.video_slider, self.play_pause_button)
-        
-        self.video_player.change_frame(0)
+        #self.video_player.change_frame(0)
 
     def build_ui_elements(self):
         self.vertical_layout = QVBoxLayout(self)
         self.horizontal_layout = QHBoxLayout()
         
-        self.videos_list = VideosList(self.video_player, ['/media/eduardo/HD 2tb/Downloads/HD Simulado/MS-112/MS-112_C_01_R0/MS-112_C_02_R0.mp4', '/media/eduardo/HD 2tb/Downloads/HD Simulado/MS-112/MS-112_C_01_R0/MS-112_C_01_R0.mp4'], self.vertical_layout)
+        self.videos_list = VideosList(self, ['/media/eduardo/HD 2tb/Downloads/HD Simulado/MS-112/MS-112_C_01_R0/MS-112_C_02_R0.mp4', '/media/eduardo/HD 2tb/Downloads/HD Simulado/MS-112/MS-112_C_01_R0/MS-112_C_01_R0.mp4'], self.vertical_layout)
         self.image_viewer = ImageViewer(self.vertical_layout)
         self.vertical_layout.addLayout(self.horizontal_layout)
         
@@ -38,6 +35,14 @@ class VideoPlayerWidget(QWidget):
         self.time_counter = TimeCounter(self.video_player,self.horizontal_layout)
         self.video_speed_button = VideoSpeedButton(self.video_player,self.horizontal_layout)
 
+        self.video_player.add_ui_elements(self.image_viewer, self.time_counter, self.video_slider, self.play_pause_button)
+    
+    def change_video(self, video_path):
+        self.video = Video(video_path)
+        self.video_player = VideoPlayer(self.video, self.custom_class)
+        self.build_ui_elements()
+        self.video_player.change_frame(0)
+
 
 class CustomBase():
     def __init__(self) -> None:
@@ -46,11 +51,12 @@ class CustomBase():
         self.SignDetectionModel = init_detector(DetectionModelConfig, DetectionModelWeights, device='cuda:0')
 
     def custom_method(self, numpy_image):
-        detection_result = inference_detector(self.SignDetectionModel, numpy_image)
-        print(detection_result)
-        return self.SignDetectionModel.show_result(
-            numpy_image, detection_result, score_thr=0.3, show=False
-        )
+        # detection_result = inference_detector(self.SignDetectionModel, numpy_image)
+        # print(detection_result)
+        # return self.SignDetectionModel.show_result(
+        #     numpy_image, detection_result, score_thr=0.3, show=False
+        # )
+        return numpy_image
 
 from PyQt6.QtWidgets import QApplication
 import sys

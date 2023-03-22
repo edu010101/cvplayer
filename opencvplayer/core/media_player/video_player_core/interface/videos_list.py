@@ -1,10 +1,11 @@
 from PyQt6.QtWidgets import QComboBox
 from opencvplayer.core.utils.widgets_utils import start_widget_basics
+from opencvplayer.core.media_objects.video import Video
 import os
 
 class VideosList(QComboBox):
     videos_dict = {}
-    current_video = None
+    current_video_path = None
     video_player = None
 
     def __init__(self, video_player, videos_path, layout, css_path='opencvplayer/stylesheets/videos_list.css',X=30,Y=32) -> None:
@@ -17,13 +18,12 @@ class VideosList(QComboBox):
         self.currentIndexChanged.connect(self.change_video)
 
     def change_video(self, video_index):
-        self.current_video = self.videos_dict[self.currentText()]
-        self.video_player.set_video(self.current_video)
-
+        self.current_video_path = self.videos_dict[self.currentText()]
+        self.video_player.change_video(self.current_video_path)
+        
     def populate_video_dict(self, videos_path):
         self.clear()
         
-
         for video_path in self.videos_list:
             self.check_video_path(video_path)
             video_name = os.path.basename(video_path)

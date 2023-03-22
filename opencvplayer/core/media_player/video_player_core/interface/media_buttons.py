@@ -19,14 +19,10 @@ class PlayPauseButton(QToolButton):
         if self.is_paused:
             self.is_paused = False
             self.setIcon(QIcon('opencvplayer/icons/PauseIcon.png'))
-
             self.video_player.play_video()
         else:
             self.is_paused = True
-            
             self.setIcon(QIcon('opencvplayer/icons/PlayIcon.png'))
-
-
             #stylesheet_utils.set_style_sheet(self, self.play_css)
             self.video_player.pause_video()
     
