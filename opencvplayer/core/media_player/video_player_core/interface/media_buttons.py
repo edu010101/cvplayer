@@ -5,11 +5,12 @@ from PyQt6.QtGui import QKeySequence
 from PyQt6.QtGui import QIcon
 
 class PlayPauseButton(QToolButton):
-    def __init__(self, video_player, layout, CSS='opencvplayer/stylesheets/play_button.css', X=27, Y=27):
+    def __init__(self, video_player, layout, CSS='opencvplayer/stylesheets/play_button.css', X=40, Y=40):
         super().__init__()
         self.setShortcut(QKeySequence('Space'))
         self.setAutoRaise(True)
         self.setIcon(QIcon('opencvplayer/icons/PlayIcon.png'))
+        self.setIconSize(self.size())
         widgets_utils.start_widget_basics(self, layout, CSS, fixed_width=X,fixed_height=Y)
         self.video_player = video_player
         self.pressed.connect(self.toggle) 
@@ -31,7 +32,7 @@ class PlayPauseButton(QToolButton):
         #stylesheet_utils.set_style_sheet(self, self.play_css)       
 
 class NextFrameButton(QPushButton):
-    def __init__(self, video_player, layout, CSS ='opencvplayer/stylesheets/next_frame_button.css', X=40, Y=27):
+    def __init__(self, video_player, layout, CSS ='opencvplayer/stylesheets/next_frame_button.css', X=40, Y=40):
         super().__init__()
         self.setShortcut(QKeySequence('Right'))
         widgets_utils.start_widget_basics(self, layout, CSS, fixed_width=X,fixed_height=Y)
@@ -43,7 +44,7 @@ class NextFrameButton(QPushButton):
         self.video_player.change_frame(next_video_frame)
 
 class PreviousFrameButton(QPushButton):
-    def __init__(self, video_player, layout, CSS = 'opencvplayer/stylesheets/previous_frame_button.css',X=40, Y=27):
+    def __init__(self, video_player, layout, CSS = 'opencvplayer/stylesheets/previous_frame_button.css',X=40, Y=40):
         super().__init__()
         self.setShortcut(QKeySequence('Left'))
         widgets_utils.start_widget_basics(self, layout, CSS, fixed_width=X,fixed_height=Y)

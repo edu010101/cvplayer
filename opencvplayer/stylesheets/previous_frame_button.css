@@ -4,7 +4,7 @@ QPushButton{
        
 }
 QPushButton:hover {
-    background-color: rgba(206, 197, 197, 0.103);
+    background-color: rgba(206, 197, 197, 0.21);
 }
 
 

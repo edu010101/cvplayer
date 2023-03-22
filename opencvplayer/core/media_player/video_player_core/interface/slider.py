@@ -57,6 +57,7 @@ from PyQt6.QtWidgets import QStyle
 from PyQt6.QtCore import Qt 
 import opencvplayer.core.utils.widgets_utils as widgets_utils
 
+
 #Credits for eyllanesc, thanks bro, for real.
 #His StackOverflow account -> https://stackoverflow.com/users/6622587/eyllanesc
 
@@ -75,8 +76,8 @@ class VideoSlider(QtWidgets.QSlider):
             e.accept()
             x = e.pos().x()
             value = (self.maximum() - self.minimum()) * x / self.width() + self.minimum()
-            self.setValue(value)
-            self.video_player.change_frame(value)            
+            self.setValue(int(value))
+            self.video_player.change_frame(value) 
         else:
             return super().mousePressEvent(self, e)
         
@@ -88,9 +89,9 @@ class VideoSlider(QtWidgets.QSlider):
 
     def set_range(self, duration):
         self.setMinimum(0)
-        self.setMaximum(duration)
+        self.setMaximum(int(duration))
 
     def set_value(self, value):
-        self.setValue(value)
+        self.setValue(int(value))
 
     # def pixel_pos_to_range_value(self, pos):

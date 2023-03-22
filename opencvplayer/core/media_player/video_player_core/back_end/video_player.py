@@ -37,10 +37,9 @@ class VideoPlayer():
         self.play = play
     
     def set_video(self, video: Video):
-        self.video = video
         self.video_updater.stop_time_updater()
-        self.video.update_to_next_video_moment()
-        
+        self.video = video
+        self.create_video_updater()  
         self.change_frame(0)
         self.slider.set_range(self.video.total_number_of_frames)
         self.update_ui_elements()
@@ -48,20 +47,13 @@ class VideoPlayer():
     def update_ui_elements_each_second(self):
         if self.current_time + 1 < time.time():
             self.current_time = time.time()
-            self.slider.set_value(self.video.current_frame_id)
+            self.slider.set_value(int(self.video.current_frame_id))
             self.time_counter.update_time(self.video.current_milliseconds)
 
     def update_ui_elements(self):
         self.slider.set_value(self.video.current_frame_id)
         self.time_counter.update_time(self.video.current_milliseconds)
         self.play.set_play()
-        
-    def start_time(self):
-        self.start = time.time()
-    
-    def end_time(self):
-        self.end = time.time()
-        print(self.end - self.start)
 
     def custom_method(self):
         self.video.current_frame =  self.custom_class.custom_method(self.video.current_frame)

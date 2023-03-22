@@ -1,10 +1,9 @@
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QMainWindow
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QMainWindow, QSpacerItem, QSizePolicy
 from opencvplayer.core.media_player.video_player_core.interface import *
 from opencvplayer.core.media_objects.video import Video
 from opencvplayer.core.media_player.video_player_core.back_end.video_player import VideoPlayer
-#from media_player.video_player_core.back_end.videos_manager import VideosManager
-from opencvplayer.core.utils.widgets_utils import start_widget_basics
 
+from opencvplayer.core.utils.widgets_utils import start_widget_basics
 from mmdet.apis import inference_detector, init_detector
 
 
@@ -21,35 +20,35 @@ class VideoPlayerWidget(QWidget):
         #self.video_player.change_frame(0)
 
     def build_ui_elements(self):
-        self.vertical_layout = QVBoxLayout(self)
-        self.horizontal_layout = QHBoxLayout()
+        self.main_layout = QVBoxLayout(self)
+        self.top_layout = QHBoxLayout()
+        self.bottom_layout = QHBoxLayout()
         
-        self.videos_list = VideosList(self, ['/media/eduardo/HD 2tb/Downloads/HD Simulado/MS-112/MS-112_C_01_R0/MS-112_C_02_R0.mp4', '/media/eduardo/HD 2tb/Downloads/HD Simulado/MS-112/MS-112_C_01_R0/MS-112_C_01_R0.mp4'], self.vertical_layout)
-        self.image_viewer = ImageViewer(self.vertical_layout)
-        self.vertical_layout.addLayout(self.horizontal_layout)
+        self.main_layout.addLayout(self.top_layout)
+        self.videos_list = VideosList(self.video_player,  self.top_layout)
+        spacer = QSpacerItem(1, 10, hPolicy= QSizePolicy.Policy.Expanding)
+        self.top_layout.addItem(spacer)
+        self.add_videos_button = AddVideosButton(self.videos_list, self.top_layout)
         
-        self.previous_frame_button = PreviousFrameButton(self.video_player,self.horizontal_layout)
-        self.play_pause_button = PlayPauseButton(self.video_player,self.horizontal_layout)
-        self.next_frame_button = NextFrameButton(self.video_player,self.horizontal_layout)
-        self.video_slider = VideoSlider(self.video_player,self.horizontal_layout)
-        self.time_counter = TimeCounter(self.video_player,self.horizontal_layout)
-        self.video_speed_button = VideoSpeedButton(self.video_player,self.horizontal_layout)
+        self.image_viewer = ImageViewer(self.main_layout)
+        self.main_layout.addLayout(self.bottom_layout)
+        
+        self.previous_frame_button = PreviousFrameButton(self.video_player,self.bottom_layout)
+        self.play_pause_button = PlayPauseButton(self.video_player,self.bottom_layout)
+        self.next_frame_button = NextFrameButton(self.video_player,self.bottom_layout)
+        self.video_slider = VideoSlider(self.video_player,self.bottom_layout)
+        self.time_counter = TimeCounter(self.video_player,self.bottom_layout)
+        self.video_speed_button = VideoSpeedButton(self.video_player,self.bottom_layout)
 
         self.video_player.add_ui_elements(self.image_viewer, self.time_counter, self.video_slider, self.play_pause_button)
-    
-    def change_video(self, video_path):
-        self.video = Video(video_path)
-        self.video_player = VideoPlayer(self.video, self.custom_class)
-        self.build_ui_elements()
-        self.video_player.change_frame(0)
 
 
 class CustomBase():
     def __init__(self) -> None:
-        DetectionModelConfig='/home/eduardo/labelme/labelme/modelo/SignDetectorConfig.py'
-        DetectionModelWeights='/home/eduardo/labelme/labelme/modelo/SignDetectorWeights.pth'
-        self.SignDetectionModel = init_detector(DetectionModelConfig, DetectionModelWeights, device='cuda:0')
-
+        #DetectionModelConfig='/home/eduardo/labelme/labelme/modelo/SignDetectorConfig.py'
+        #DetectionModelWeights='/home/eduardo/labelme/labelme/modelo/SignDetectorWeights.pth'
+        #self.SignDetectionModel = init_detector(DetectionModelConfig, DetectionModelWeights, device='cuda:0')
+        pass
     def custom_method(self, numpy_image):
         # detection_result = inference_detector(self.SignDetectionModel, numpy_image)
         # print(detection_result)

@@ -1,7 +1,10 @@
 QToolButton{
-    /* border-image: url('icons/PlayIcon.png'); */
     background:transparent;    
+    border: none
 }
 QToolButton:hover {
-    background-color: rgba(206, 197, 197, 0.103);
+    background-color: rgba(206, 197, 197, 0.21);
+}
+QToolButton:pressed{
+    background-color: rgba(132, 129, 129, 0.264);
 }
