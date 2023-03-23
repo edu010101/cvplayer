@@ -1,4 +1,22 @@
-QPushButton{
-    font: 75 11pt "Ubuntu";color:rgb(255, 255, 255);
-    font-weight: bold;
+QSpinBox {
+    border-radius: 4px;
+	color: white;
+    font-size: 20px;
+	
+}
+
+/* background color when line edit is selected */
+
+QSpinBox::up-button {
+    width: 0px;
+}
+
+QSpinBox::up-arrow {
+    image: url(:/images/up_arrow.png);
+    width: 7px;
+    height: 7px;
+}
+
+QSpinBox::down-button {
+    width: 0px;
 }

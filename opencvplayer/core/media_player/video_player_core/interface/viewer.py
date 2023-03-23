@@ -4,7 +4,7 @@ import opencvplayer.core.utils.video_utils as video_utils
 
 
 class ImageViewer(QLabel):
-    def __init__(self, layout, CSS=None):
+    def __init__(self, layout, CSS='opencvplayer/stylesheets/image_viewer.css'):
         super().__init__()
         self.setScaledContents(True)  
         widgets_utils.start_widget_basics(self, layout, CSS)

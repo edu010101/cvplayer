@@ -2,7 +2,7 @@ from PyQt6.QtWidgets import QPushButton, QFileDialog
 from opencvplayer.core.utils.widgets_utils import start_widget_basics
 
 class AddVideosButton(QPushButton):
-    def __init__(self, videos_list, layout=None, CSS=None):
+    def __init__(self, videos_list, layout=None, CSS='opencvplayer/stylesheets/add_videos_button.css'):
         super().__init__()
         start_widget_basics(self, layout, CSS)
         self.setText('Add Videos')

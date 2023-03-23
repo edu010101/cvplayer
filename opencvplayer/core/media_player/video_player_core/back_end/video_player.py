@@ -2,8 +2,6 @@ from opencvplayer.core.updater.video_updater import VideoUpdater
 from opencvplayer.core.media_objects.video import Video
 import time
 
-
-
 class VideoPlayer():
     def __init__(self, video: Video = None, custom_class=None) -> None:
         self.video = video
@@ -19,16 +17,16 @@ class VideoPlayer():
 
     def change_frame(self, frame_id : int)-> None:
         if 0 <= frame_id < self.video.total_number_of_frames:
-            self.video_updater.stop_time_updater()
             self.video.set_current_frame_id(frame_id)
-            self.video_updater.start_signal_updater()
+            self.video_updater.start_signal_updater()        
 
     def change_speed(self, speed: int):
         """speed is a positive integer, 1 is normal speed, 2 is double speed, 3 is triple speed, etc."""
         self.video.set_frames_to_jump(speed)
     
     def show_frame(self):
-        self.viewer.show_cv2_image(self.video.current_frame)
+        if self.video.current_frame is not None:
+            self.viewer.show_cv2_image(self.video.current_frame)
     
     def add_ui_elements(self, viewer, time_counter, slider, play):
         self.viewer = viewer
@@ -53,7 +51,7 @@ class VideoPlayer():
     def update_ui_elements(self):
         self.slider.set_value(self.video.current_frame_id)
         self.time_counter.update_time(self.video.current_milliseconds)
-        self.play.set_play()
+        self.play.set_paused()
 
     def custom_method(self):
         self.video.current_frame =  self.custom_class.custom_method(self.video.current_frame)

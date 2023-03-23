@@ -10,6 +10,7 @@ class VideoSpeedButton(QSpinBox):
         self.setSuffix(' x')
         self.valueChanged.connect(video_player.change_speed)
         self.setValue(1)
+        self.setReadOnly(True)
         self.start_shortcuts()
 
     def increase_speed(self):

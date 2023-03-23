@@ -7,14 +7,10 @@ from PyQt6.QtGui import QIcon
 class PlayPauseButton(QToolButton):
     def __init__(self, video_player, layout, CSS='opencvplayer/stylesheets/play_button.css', X=40, Y=40):
         super().__init__()
-        self.setShortcut(QKeySequence('Space'))
-        self.setAutoRaise(True)
-        self.setIcon(QIcon('opencvplayer/icons/PlayIcon.png'))
-        self.setIconSize(self.size())
+        self.start_button()
         widgets_utils.start_widget_basics(self, layout, CSS, fixed_width=X,fixed_height=Y)
         self.video_player = video_player
         self.pressed.connect(self.toggle) 
-        self.is_paused = True
         
     def toggle(self):
         if self.is_paused:
@@ -24,12 +20,19 @@ class PlayPauseButton(QToolButton):
         else:
             self.is_paused = True
             self.setIcon(QIcon('opencvplayer/icons/PlayIcon.png'))
-            #stylesheet_utils.set_style_sheet(self, self.play_css)
             self.video_player.pause_video()
     
-    def set_play(self):
+    def set_paused(self):
+        self.setIcon(QIcon('opencvplayer/icons/PlayIcon.png'))
+        self.is_paused = True 
+
+    def start_button(self):
+        self.setShortcut(QKeySequence('Space'))
+        self.setAutoRaise(True)
+        self.setIcon(QIcon('opencvplayer/icons/PlayIcon.png'))
+        self.setIconSize(self.size())
         self.is_paused = True
-        #stylesheet_utils.set_style_sheet(self, self.play_css)       
+        
 
 class NextFrameButton(QPushButton):
     def __init__(self, video_player, layout, CSS ='opencvplayer/stylesheets/next_frame_button.css', X=40, Y=40):

@@ -9,15 +9,13 @@ from mmdet.apis import inference_detector, init_detector
 
 class VideoPlayerWidget(QWidget):
     
-    def __init__(self, videos_path: str= '/media/eduardo/HD 2tb/Downloads/HD Simulado') -> None:
+    def __init__(self) -> None:
         super().__init__()
         start_widget_basics(self, None, 'opencvplayer/stylesheets/video_player_widget.css', minimum_height=300, minimum_width=300)
         self.video = Video('opencvplayer/core/utils/default.mp4')
-        self.videos_path = videos_path
         self.custom_class = CustomBase()
         self.video_player = VideoPlayer(self.video, self.custom_class)
         self.build_ui_elements()
-        #self.video_player.change_frame(0)
 
     def build_ui_elements(self):
         self.main_layout = QVBoxLayout(self)
@@ -62,5 +60,6 @@ import sys
 
 app = QApplication(sys.argv)
 window = QMainWindow()
+window.setStyleSheet("""QWidget{background-color: rgba(1,1,1,255);}""")
 window.setCentralWidget(VideoPlayerWidget())
 window.show()

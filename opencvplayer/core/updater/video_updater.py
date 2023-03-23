@@ -14,7 +14,9 @@ class VideoUpdater(TimeUpdater):
     def __init__(self, video_fps: float = 29.97, time_interval: positive_int = 0) -> None:
         super().__init__(time_interval)
         self.time_beetwen_frames = 1 / video_fps
-            
+        self.__time_updater_methods_dict = {}
+        self.__signal_updater_methods_dict = {}
+                    
     def start_time_updater(self) -> None:
         self.quit()
         self.__time_updater_boolean = True
@@ -26,7 +28,7 @@ class VideoUpdater(TimeUpdater):
         self.__time_updater_boolean = False
         ####Extremamente perigoso!, concertar isso
         now = time.time()
-        while self.isFinished() == False and now + 0.2 > time.time():  
+        while self.isRunning() == True:## and now + 0.2 > time.time():  
             continue
         
     def start_signal_updater(self) -> None:
@@ -40,9 +42,7 @@ class VideoUpdater(TimeUpdater):
             start = time.time()
             for method in self.__time_updater_methods_dict.values():
                 method()
-            
             time.sleep(max(0, self.time_beetwen_frames - (time.time() - start)))
-        
     
     def __run_signal_updater(self) -> None:
         [method() for method in self.__signal_updater_methods_dict.values()]
@@ -65,3 +65,7 @@ class VideoUpdater(TimeUpdater):
     
     def remove_method_from_signal_updater(self, method_key: str) -> str:
         return self.__signal_updater_methods_dict.pop(method_key)
+
+    def is_time_updater_running(self) -> bool:
+        return self.__time_updater_boolean
+    

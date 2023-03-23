@@ -1,12 +1,13 @@
 QComboBox {
     border-radius: 7px;
-    color: rgba(85,85,85,255);
-    background-color: rgba(255,255,255,255);
+    color: whitesmoke;
+    background-color: rgba(23,28,34,255);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    min-width: 200px;
 
 }
 QComboBox::hover{
-    background-color: rgba(221,236,253,255);
+    background-color: rgba(33,38,44,255);
     border-radius: 5px;
 }
 QComboBox:!editable:on, QComboBox::drop-down:editable:on {
