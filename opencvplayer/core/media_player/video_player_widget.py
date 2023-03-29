@@ -1,10 +1,8 @@
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QMainWindow, QSpacerItem, QSizePolicy
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QSpacerItem, QSizePolicy
 from opencvplayer.core.media_player.video_player_core.interface import *
 from opencvplayer.core.media_objects.video import Video
 from opencvplayer.core.media_player.video_player_core.back_end.video_player import VideoPlayer
-
 from opencvplayer.core.utils.widgets_utils import start_widget_basics
-from mmdet.apis import inference_detector, init_detector
 
 
 class VideoPlayerWidget(QWidget):
@@ -15,6 +13,8 @@ class VideoPlayerWidget(QWidget):
         self.custom_class = custom_class
         self.video_player = VideoPlayer(self.video, self.custom_class)
         self.build_ui_elements()
+        self.video_player.change_frame(0)
+
 
     def build_ui_elements(self):
         self.main_layout = QVBoxLayout(self)
@@ -40,26 +40,3 @@ class VideoPlayerWidget(QWidget):
         self.video_player.add_ui_elements(self.image_viewer, self.time_counter, self.video_slider, self.play_pause_button)
 
 
-class CustomBase():
-    def __init__(self) -> None:
-        #DetectionModelConfig='/home/eduardo/labelme/labelme/modelo/SignDetectorConfig.py'
-        #DetectionModelWeights='/home/eduardo/labelme/labelme/modelo/SignDetectorWeights.pth'
-        #self.SignDetectionModel = init_detector(DetectionModelConfig, DetectionModelWeights, device='cuda:0')
-        pass
-    def custom_method(self, numpy_image):
-        # detection_result = inference_detector(self.SignDetectionModel, numpy_image)
-        # print(detection_result)
-        # return self.SignDetectionModel.show_result(
-        #     numpy_image, detection_result, score_thr=0.3, show=False
-        # )
-        return numpy_image
-
-from PyQt6.QtWidgets import QApplication
-import sys
-
-app = QApplication(sys.argv)
-window = QMainWindow()
-window.setStyleSheet("""QWidget{background-color: rgba(1,1,1,255);}""")
-custm = CustomBase()
-window.setCentralWidget(VideoPlayerWidget(custm))
-window.show()
