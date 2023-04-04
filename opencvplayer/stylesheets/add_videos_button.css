@@ -1,11 +1,26 @@
-QPushButton{
-    background-color: rgba(23,28,34,255);
-    border-radius: 7px;
-    padding: 8px;
-    min-width: 70px;
+QPushButton {
+    background-color: rgb(28, 113, 216);
+    color: white;
+    border-radius: 10px;
+    padding: 6px;
+    min-width: 150px;
+    min-height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+
 }
 
-QPushButton:hover{
-    background-color: rgba(33,38,44,255);
-    border-radius: 5px;
+QPushButton:hover {
+    background-color: rgb(60, 130, 240);
+}
+
+QPushButton:pressed {
+    background-color: rgb(20, 100, 200);
+    color: white;
+    border-radius: 10px;
+    padding: 6px;
+    min-width: 300px;
+    min-height: 50px;
+    font-size: 20px;
+    font-weight: bold;
 }
