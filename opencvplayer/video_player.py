@@ -4,8 +4,6 @@ import sys
 
 class VideoPlayer():
     def __init__(self, custom_class) -> None:
-        #execute the app
-
         app = QApplication(sys.argv)
         video_player = VideoPlayerWidget(custom_class)
         window = QMainWindow()

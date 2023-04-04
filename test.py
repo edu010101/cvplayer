@@ -1,4 +1,4 @@
-from opencvplayer.video_player import VideoPlayer
+from opencvplayer import VideoPlayer
 from mmdet.apis import inference_detector, init_detector
 
 

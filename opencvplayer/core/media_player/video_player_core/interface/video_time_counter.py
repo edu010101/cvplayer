@@ -7,8 +7,9 @@ class TimeCounter(QLabel):
         self.video_player = video_player
         self.setText("00:00:00")
         self.setScaledContents(True)
+        self.setStyleSheet("background:rgb(239,239,239); font-size: 20px; color: black;")
+
         layout.addWidget(self)
-        self.setStyleSheet("font-size: 20px; color: white;")
 
     def update_time(self, time_in_miliseconds):
         self.setText(milliseconds_to_counter_time(time_in_miliseconds))

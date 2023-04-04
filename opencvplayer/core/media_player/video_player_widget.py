@@ -15,7 +15,6 @@ class VideoPlayerWidget(QWidget):
         self.build_ui_elements()
         self.video_player.change_frame(0)
 
-
     def build_ui_elements(self):
         self.main_layout = QVBoxLayout(self)
         self.top_layout = QHBoxLayout()
@@ -38,5 +37,8 @@ class VideoPlayerWidget(QWidget):
         self.video_speed_button = VideoSpeedButton(self.video_player,self.bottom_layout)
 
         self.video_player.add_ui_elements(self.image_viewer, self.time_counter, self.video_slider, self.play_pause_button)
+
+
+
 
 

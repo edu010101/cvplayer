@@ -8,11 +8,12 @@ class VideosList(QComboBox):
     current_video_path = None
     video_player = None
 
-    def __init__(self, video_player, layout, css_path='opencvplayer/stylesheets/videos_list.css',X=30,Y=32) -> None:
+    def __init__(self, video_player, layout, css_path='opencvplayer/stylesheets/videos_list.css',X=350,Y=40) -> None:
         super().__init__()
         start_widget_basics(self, layout, css_path, fixed_height=Y)
         self.video_player = video_player
         self.setInsertPolicy(QComboBox.InsertPolicy.NoInsert)
+        self.setMinimumWidth(X)
         self.textActivated.connect(self.change_video)
 
     def change_video(self, video_index):
