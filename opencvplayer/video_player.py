@@ -7,6 +7,7 @@ class VideoPlayer():
         app = QApplication(sys.argv)
         video_player = VideoPlayerWidget(custom_class)
         window = QMainWindow()
+        window.setStyleSheet('background-color: rgb(200,200,200);')
         window.setCentralWidget(video_player)
         window.show()
         sys.exit(app.exec())

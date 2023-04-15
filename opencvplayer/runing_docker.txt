@@ -1,0 +1,6 @@
+HOW TO RUN THE DOCKER
+
+paste the following command making changes on the nescessary places
+
+sudo docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -u qtuser containername
+

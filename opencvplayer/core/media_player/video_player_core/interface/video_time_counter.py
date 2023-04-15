@@ -7,7 +7,7 @@ class TimeCounter(QLabel):
         self.video_player = video_player
         self.setText("00:00:00")
         self.setScaledContents(True)
-        self.setStyleSheet("background:rgb(239,239,239); font-size: 20px; color: black;")
+        self.setStyleSheet("background-color: rgb(200,200,200); font-size: 20px; color: black;")
 
         layout.addWidget(self)
 
