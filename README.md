@@ -1,8 +1,8 @@
-##Description
+## Description
 
 Welcome to **OpenCVPlayer**, a powerful and easy to use tool for visualizing computer vision models and their inferences. With OpenCVPlayer, you can easily view and analyze the output of your models, no mather wich library or framework you are using, saving you from long codes for a simple inference visualization.
 
-##Features
+## Features
 - [x] Video inference visualization.
 - [ ] Images inference visualization.
 - [x] Frame level control.
@@ -11,16 +11,16 @@ Welcome to **OpenCVPlayer**, a powerful and easy to use tool for visualizing com
 
 
 
-##Requirements
+## Requirements
 
 - Anaconda
 - opencv-python
 - PyQt6
 - Python3
 
-##Instalation
+## Instalation
 
-###pip
+### pip
 
 ```bash
 # inside your env
@@ -28,9 +28,9 @@ pip install PyQt6==6.4.2 PyQt6-Qt6==6.4.2 PyQt6-sip==13.4.1
 pip install opencv-python
 ```
 
-##Usage
+## Usage
 
-###Video Player
+### Video Player
 
 ```python
 from opencvplayer import VideoPlayer
@@ -49,7 +49,7 @@ class ExampleName():
 
 VideoPlayer(ExampleName()) #load your class as an argument to the player
 ```
-###Image Player
+### Image Player
 
 ```python
 from opencvplayer import ImagePlayer
@@ -70,6 +70,6 @@ imageclassifier = ExampleClass()
 ImagePlayer(imageclassifier) #load your class as an argument to the player
 ```
 
-###Yolov8 demo
+### Yolov8 demo
 
-###mmdetection demo
+### mmdetection demo
