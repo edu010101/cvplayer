@@ -1,3 +1,16 @@
+<h1 align="center">
+  <img src="opencvplayer/icons/opencvplayer.png"><br/>labelme
+</h1>
+
+<h4 align="center">
+  Player for computer vision models and their inferences 
+</h4>
+<br/>
+
+<div align="center">
+  <img src="opencvplayer/icons/example.png" width="70%">
+</div>
+
 ## Description
 
 Welcome to **OpenCVPlayer**, a powerful and easy to use tool for visualizing computer vision models and their inferences. With OpenCVPlayer, you can easily view and analyze the output of your models, no mather wich library or framework you are using, saving you from long codes for a simple inference visualization.

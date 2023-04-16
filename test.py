@@ -12,9 +12,12 @@ class CustomBase():
         results = self.model(numpy_image)  # predict on an image
         for result in results:
             boxes = result.boxes  # Boxes object for bbox outputs
+            classes = result.probs
+            names = result.names
+            print(boxes.cls)
             for box in boxes:
-                print(box.xyxy[0][1])
                 cv2.rectangle(numpy_image, (int(box.xyxy[0][0]), int(box.xyxy[0][1])), (int(box.xyxy[0][2]), int(box.xyxy[0][3])), (0, 255, 0), 2)
+                cv2.putText(numpy_image, names[int(box.cls)], (int(box.xyxy[0][0]), int(box.xyxy[0][1])), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 4)
         
         return numpy_image #return the image with the changes
     
