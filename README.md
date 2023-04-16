@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="opencvplayer/icons/opencvplayer.png"><br/>labelme
+  <img src="opencvplayer/icons/opencvplayer.png"><br/>opencvplayer
 </h1>
 
 <h4 align="center">
