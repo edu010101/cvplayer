@@ -13,7 +13,7 @@
 
 ## Description
 
-Welcome to **OpenCVPlayer**, a powerful and easy to use tool for visualizing computer vision models and their inferences. With OpenCVPlayer, you can easily view and analyze the output of your models, no mather wich library or framework you are using, saving you from long codes for a simple inference visualization.
+Welcome to **CVPlayer**, a powerful and easy to use tool for visualizing computer vision models and their inferences. With CVPlayer, you can easily view and analyze the output of your models, no mather wich library or framework you are using, saving you from long codes for a simple inference visualization.
 
 ## Features
 - [x] Video inference visualization.
@@ -30,6 +30,7 @@ Welcome to **OpenCVPlayer**, a powerful and easy to use tool for visualizing com
 # inside your env
 pip install PyQt6==6.4.2 PyQt6-Qt6==6.4.2 PyQt6-sip==13.4.1
 pip install opencv-python
+pip install pillow
 ```
 ## Instalation
 
