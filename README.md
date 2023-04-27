@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="opencvplayer/icons/opencvplayer.png"><br/>opencvplayer
+  <img src="cvplayer/icons/cvplayerlogo.png"><br/>cvplayer
 </h1>
 
 <h4 align="center">
@@ -8,7 +8,7 @@
 <br/>
 
 <div align="center">
-  <img src="opencvplayer/icons/example.png" width="70%">
+  <img src="cvplayer/icons/example.png" width="70%">
 </div>
 
 ## Description
@@ -36,8 +36,8 @@ pip install pillow
 
 ```bash
 # inside your env
-git clone https://github.com/edu010101/opencvplayer
-cd opencvplayer
+git clone https://github.com/edu010101/cvplayer
+cd cvplayer
 pip install -e .
 ```
 ## Usage
@@ -45,7 +45,7 @@ pip install -e .
 ### Video Player
 
 ```python
-from opencvplayer import VideoPlayer
+from cvplayer import VideoPlayer
 
 #create a class with any name
 class ExampleName():
@@ -64,7 +64,7 @@ VideoPlayer(ExampleName()) #load your class as an argument to the player
 ### Image Player
 
 ```python
-from opencvplayer import ImagePlayer
+from cvplayer import ImagePlayer
 
 #create a class with any name
 class ExampleClass():
@@ -85,7 +85,7 @@ ImagePlayer(imageclassifier) #load your class as an argument to the player
 ### Yolov8 demo
 
 ```python
-from opencvplayer import VideoPlayer
+from cvplayer import VideoPlayer
 from ultralytics import YOLO
 import cv2
 
@@ -110,7 +110,7 @@ VideoPlayer(CustomBase()) #pass the class to the VideoPlayer and start the playe
 ### mmdetection demo
 
 ```python
-from opencvplayer import VideoPlayer
+from cvplayer import VideoPlayer
 from mmdet.apis import inference_detector, init_detector
 
 #mmdectection example

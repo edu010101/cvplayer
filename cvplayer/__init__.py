@@ -1,0 +1,1 @@
+from cvplayer.video_player import VideoPlayer

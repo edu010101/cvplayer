@@ -1,4 +1,4 @@
-from opencvplayer import VideoPlayer
+from cvplayer import VideoPlayer
 
 from ultralytics import YOLO
 import cv2
