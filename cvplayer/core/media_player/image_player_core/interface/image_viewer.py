@@ -1,27 +1,63 @@
-from PyQt6.QtWidgets import QLabel
+from PyQt6 import QtCore, QtGui, QtWidgets
 import cvplayer.core.utils.widgets_utils as widgets_utils
 import cvplayer.core.utils.video_utils as video_utils
 
 
-class ImageViewer(QLabel):
+class ImageViewer(QtWidgets.QLabel):
     def __init__(self, layout=None, CSS='cvplayer/stylesheets/image_viewer.css'):
-        super().__init__()
-        self.setScaledContents(True)  
+        super().__init__()        
+        #self.setScaledContents(True)  
         widgets_utils.start_widget_basics(self, layout, CSS)
         self.cv2_image = None    
-
     def show_cv2_image(self, cv2_image):
         QPixmap = video_utils.cv2_image_to_QPixmap(cv2_image)
-        self.setPixmap(QPixmap)
+        print(QPixmap.width(), QPixmap.height())
+        w= self.width()
+        h= self.height()
+        scaled_pixmap = QPixmap.scaled(w,h, QtCore.Qt.AspectRatioMode.KeepAspectRatio)
+        self.setPixmap(scaled_pixmap)
 
-# from PyQt5 import QtCore, QtGui, QtWidgets
-# import time
+
+# AspectRatioPixmapLabel::AspectRatioPixmapLabel(QWidget *parent) :
+#     QLabel(parent)
+# {
+#     this->setMinimumSize(1,1);
+#     setScaledContents(false);
+# }
+
+# void AspectRatioPixmapLabel::setPixmap ( const QPixmap & p)
+# {
+#     pix = p;
+#     QLabel::setPixmap(scaledPixmap());
+# }
+
+# int AspectRatioPixmapLabel::heightForWidth( int width ) const
+# {
+#     return pix.isNull() ? this->height() : ((qreal)pix.height()*width)/pix.width();
+# }
+
+# QSize AspectRatioPixmapLabel::sizeHint() const
+# {
+#     int w = this->width();
+#     return QSize( w, heightForWidth(w) );
+# }
+
+# QPixmap AspectRatioPixmapLabel::scaledPixmap() const
+# {
+#     return pix.scaled(this->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+# }
+
+# void AspectRatioPixmapLabel::resizeEvent(QResizeEvent * e)
+# {
+#     if(!pix.isNull())
+#         QLabel::setPixmap(scaledPixmap());
+# }
 
 # class ImageViewer(QtWidgets.QGraphicsView):
 #     photoClicked = QtCore.pyqtSignal(QtCore.QPoint)
 #     change_image_on_viewer = QtCore.pyqtSignal()
     
-#     def __init__(self, layout, CSS=None):
+#     def __init__(self, layout=None, CSS=None):
 #         super(ImageViewer, self).__init__()
 #         widgets_utils.start_widget_basics(self, layout, CSS)
 #         self.cv2_image = None
@@ -32,12 +68,12 @@ class ImageViewer(QLabel):
 #         self._photo = QtWidgets.QGraphicsPixmapItem()
 #         self._scene.addItem(self._photo)
 #         self.setScene(self._scene)
-#         self.setTransformationAnchor(QtWidgets.QGraphicsView.AnchorUnderMouse)
-#         self.setResizeAnchor(QtWidgets.QGraphicsView.AnchorUnderMouse)
-#         self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-#         self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+#         self.setTransformationAnchor(QtWidgets.QGraphicsView.ViewportAnchor.AnchorUnderMouse)
+#         self.setResizeAnchor(QtWidgets.QGraphicsView.ViewportAnchor.AnchorUnderMouse)
+#         self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+#         self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
 #         self.setBackgroundBrush(QtGui.QBrush(QtGui.QColor(30, 30, 30)))
-#         self.setFrameShape(QtWidgets.QFrame.NoFrame)
+#         self.setFrameShape(QtWidgets.QFrame.Shape.NoFrame  )
 #         self.change_image_on_viewer.connect(self.setPhoto)
 
 #     def show_cv2_image(self, cv2_image):
@@ -60,15 +96,11 @@ class ImageViewer(QLabel):
 #         self._zoom = 0
 
 #     def setPhoto(self):
-#         start = time.time()
 #         self._zoom = 0
 #         self._empty = False
-#         self.setDragMode(QtWidgets.QGraphicsView.ScrollHandDrag)
+#         self.setDragMode(QtWidgets.QGraphicsView.DragMode.ScrollHandDrag)
 #         self._photo.setPixmap(self.QPixmap)
-       
 #         self.fitInView()
-#         end = time.time()
-#         print("Time to set photo: ", end - start)
 
 #     def wheelEvent(self, event):
 #         if self.hasPhoto():
@@ -86,10 +118,10 @@ class ImageViewer(QLabel):
 #                 self._zoom = 0
 
 #     def toggleDragMode(self):
-#         if self.dragMode() == QtWidgets.QGraphicsView.ScrollHandDrag:
-#             self.setDragMode(QtWidgets.QGraphicsView.NoDrag)
+#         if self.dragMode() == QtWidgets.QGraphicsView.DragMode.ScrollHandDrag:
+#             self.setDragMode(QtWidgets.QGraphicsView.DragMode.NoDrag)
 #         elif not self._photo.pixmap().isNull():
-#             self.setDragMode(QtWidgets.QGraphicsView.ScrollHandDrag)
+#             self.setDragMode(QtWidgets.QGraphicsView.DragMode.ScrollHandDrag)
 
 #     def mousePressEvent(self, event):
 #         if self._photo.isUnderMouse():

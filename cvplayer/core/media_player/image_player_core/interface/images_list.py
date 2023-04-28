@@ -1,9 +1,11 @@
 from PyQt6.QtWidgets import QComboBox
+from PyQt6.QtCore import pyqtSignal
 from cvplayer.core.utils.widgets_utils import start_widget_basics
 import os
 
 class ImagesList(QComboBox):
     images_dict = {}
+    image_added = pyqtSignal()
     current_image_path = None
     image_player = None
 
@@ -25,6 +27,7 @@ class ImagesList(QComboBox):
             image_name = os.path.basename(image_path)
             self.images_dict[image_name] = image_path
             self.addItem(image_name)
+        self.image_added.emit()
         #self.setCurrentIndex(-1)
         
     def check_video_path(self, video_path):

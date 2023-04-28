@@ -8,6 +8,7 @@ class ImageCounter(QLabel):
         start_widget_basics(self, layout, CSS, fixed_width=X,fixed_height=Y)
         self.set_image_counter()
         self.images_list.currentIndexChanged.connect(self.set_image_counter)
+        self.images_list.image_added.connect(self.set_image_counter)
 
     def set_image_counter(self):
         self.setText(f'{self.images_list.currentIndex() + 1}/{self.images_list.count()}')
