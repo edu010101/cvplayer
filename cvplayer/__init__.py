@@ -1,1 +1,2 @@
 from cvplayer.video_player import VideoPlayer
+from cvplayer.image_player import ImagePlayer

@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QComboBox
-from PyQt6.QtCore import pyqtSignal
+from PyQt6.QtCore import pyqtSignal, Qt
 from cvplayer.core.utils.widgets_utils import start_widget_basics
 import os
 

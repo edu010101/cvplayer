@@ -1,26 +1,20 @@
 QPushButton {
-    background-color: rgb(28, 113, 216);
-    color: white;
+    background-color: transparent;
     border-radius: 10px;
-    padding: 6px;
-    min-width: 150px;
-    min-height: 30px;
-    font-size: 20px;
-    font-weight: bold;
-
-}
-
-QPushButton:hover {
-    background-color: rgb(60, 130, 240);
-}
-
-QPushButton:pressed {
-    background-color: rgb(20, 100, 200);
-    color: white;
-    border-radius: 10px;
-    padding: 6px;
-    min-width: 300px;
+    border-image: url('cvplayer/icons/add.png');
+    max-width: 50px;
+    max-height: 50px;
+    min-width: 50px;
     min-height: 50px;
-    font-size: 20px;
-    font-weight: bold;
+    margin: 0%;
+    padding: 0%;
+    border: 0px;
 }
+QPushButton:hover {
+    border-image: url('cvplayer/icons/add_hover.png');    
+}
+QPushButton:pressed {
+    border-image: url('cvplayer/icons/add_pressed.png');
+}
+
+

@@ -15,21 +15,21 @@ class PlayPauseButton(QToolButton):
     def toggle(self):
         if self.is_paused:
             self.is_paused = False
-            self.setIcon(QIcon('cvplayer/icons/PauseIcon.png'))
+            self.setIcon(QIcon('cvplayer/icons/pause.png'))
             self.video_player.play_video()
         else:
             self.is_paused = True
-            self.setIcon(QIcon('cvplayer/icons/PlayIcon.png'))
+            self.setIcon(QIcon('cvplayer/icons/play.png'))
             self.video_player.pause_video()
     
     def set_paused(self):
-        self.setIcon(QIcon('cvplayer/icons/PlayIcon.png'))
+        self.setIcon(QIcon('cvplayer/icons/play.png'))
         self.is_paused = True 
 
     def start_button(self):
         self.setShortcut(QKeySequence('Space'))
         self.setAutoRaise(True)
-        self.setIcon(QIcon('cvplayer/icons/PlayIcon.png'))
+        self.setIcon(QIcon('cvplayer/icons/play.png'))
         self.setIconSize(self.size())
         self.is_paused = True
         

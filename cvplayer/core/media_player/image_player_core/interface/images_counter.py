@@ -5,7 +5,7 @@ class ImageCounter(QLabel):
     def __init__(self, images_list, layout, CSS = 'cvplayer/stylesheets/image_counter.css', X=40, Y=40):
         super().__init__()
         self.images_list = images_list        
-        start_widget_basics(self, layout, CSS, fixed_width=X,fixed_height=Y)
+        start_widget_basics(self, layout, CSS)#, fixed_width=X,fixed_height=Y)
         self.set_image_counter()
         self.images_list.currentIndexChanged.connect(self.set_image_counter)
         self.images_list.image_added.connect(self.set_image_counter)

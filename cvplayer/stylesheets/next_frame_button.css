@@ -1,5 +1,5 @@
 QPushButton{
-    border-image: url('cvplayer/icons/FastFoward.png');
+    border-image: url('cvplayer/icons/next.png');
     background:transparent;    
 }
 QPushButton:hover {

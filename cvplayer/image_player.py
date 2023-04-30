@@ -1,18 +1,14 @@
 from PyQt6.QtWidgets import QApplication, QMainWindow
-from cvplayer.core.media_player.video_player_widget import VideoPlayerWidget
+from cvplayer.core.media_player.image_player_widget import ImagePlayerWidget
 import sys
 
-class VideoPlayer():
+class ImagePlayer():
     def __init__(self, custom_class) -> None:
         app = QApplication(sys.argv)
-        video_player = VideoPlayerWidget(custom_class)
+        image_player = ImagePlayerWidget(custom_class)
         window = QMainWindow()
         window.setStyleSheet('background-color: rgba(31,29,30,255);')
-        window.setCentralWidget(video_player)
+        window.setCentralWidget(image_player)
         window.show()
         sys.exit(app.exec())
-
-
-        
-    
 

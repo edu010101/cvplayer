@@ -1,4 +1,5 @@
 from PyQt6.QtWidgets import QPushButton, QFileDialog
+from PyQt6.QtCore import Qt
 from cvplayer.core.utils.widgets_utils import start_widget_basics
 
 
@@ -6,7 +7,6 @@ class AddImagesButton(QPushButton):
     def __init__(self, images_list, layout=None, CSS='cvplayer/stylesheets/add_videos_button.css'):
         super().__init__()
         start_widget_basics(self, layout, CSS)
-        self.setText('Add Videos')
         self.images_list = images_list
         self.clicked.connect(self.get_images)
 

@@ -17,7 +17,7 @@ class NextImageButton(QPushButton):
 class PreviousImageButton(QPushButton):
     def __init__(self, images_list, layout, CSS = 'cvplayer/stylesheets/previous_image_button.css', X=40, Y=40):
         super().__init__()
-        self.setShortcut(QKeySequence('Right'))
+        self.setShortcut(QKeySequence('Left'))
         widgets_utils.start_widget_basics(self, layout, CSS, fixed_width=X,fixed_height=Y)
         self.images_list =  images_list
         self.pressed.connect(self.previous_image)
@@ -25,3 +25,5 @@ class PreviousImageButton(QPushButton):
     def previous_image(self):
         if self.images_list.currentIndex() >= 1:
             self.images_list.setCurrentIndex(self.images_list.currentIndex() - 1)
+
+

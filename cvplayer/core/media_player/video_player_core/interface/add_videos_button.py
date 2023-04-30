@@ -1,4 +1,5 @@
 from PyQt6.QtWidgets import QPushButton, QFileDialog
+from PyQt6.QtGui import QPixmap, QIcon
 from cvplayer.core.utils.widgets_utils import start_widget_basics
 
 
@@ -6,7 +7,8 @@ class AddVideosButton(QPushButton):
     def __init__(self, videos_list, layout=None, CSS='cvplayer/stylesheets/add_videos_button.css'):
         super().__init__()
         start_widget_basics(self, layout, CSS)
-        self.setText('Add Videos')
+        #self.setText('')
+        #self.setIcon(QIcon(QPixmap('/media/eduardo/HD 2tb/Downloads/icons8-mais-2-matemática-96.png'))  )
         self.videos_list = videos_list
         self.clicked.connect(self.get_videos)
 
