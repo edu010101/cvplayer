@@ -1,8 +1,11 @@
 QSpinBox {
-    border-radius: 4px;
-    background-color: rgba(31,29,30,255);
+    border-radius: 10px;
+    background-color: rgb(31, 29, 30);
 	color: white;
     font-size: 20px;
+    font-weight: bold;
+    padding: 5px 0px 5px 0px;
+
 	
 }
 

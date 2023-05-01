@@ -1,5 +1,4 @@
 from PyQt6.QtWidgets import QPushButton, QFileDialog
-from PyQt6.QtCore import Qt
 from cvplayer.core.utils.widgets_utils import start_widget_basics
 
 
@@ -11,7 +10,7 @@ class AddImagesButton(QPushButton):
         self.clicked.connect(self.get_images)
 
     def get_images(self):
-        images_files = QFileDialog.getOpenFileNames(self, "Select videos", "", "Video Files (*.jpg *.png *.jpeg *.mp4)")[0]
+        images_files = QFileDialog.getOpenFileNames(self, "Select Images", "", "Image Files (*.jpg *.png *.jpeg *.JPG  *.PNG *.JPEG *.tif *.tiff *.npy)")[0]
         if len(images_files) > 0:
             self.images_list.add_images(images_files)
 

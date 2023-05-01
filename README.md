@@ -17,10 +17,12 @@ Welcome to **CVPlayer**, a powerful and easy to use tool for visualizing compute
 
 ## Features
 - [x] Video inference visualization.
-- [ ] Images inference visualization.
+- [x] Images inference visualization.
 - [x] Frame level control.
 - [x] Easy to use.
 - [ ] Portable for PyQt6 aplications.
+- [ ] Manipulate the player by an internal API.
+
 
 ## Requirements
 

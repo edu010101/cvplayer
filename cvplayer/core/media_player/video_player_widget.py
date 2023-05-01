@@ -13,7 +13,7 @@ class VideoPlayerWidget(QWidget):
         self.custom_class = custom_class
         self.video_player = VideoPlayer(self.video, self.custom_class)
         self.build_ui_elements()
-        self.video_player.change_frame(0)
+        self.video_player.change_frame_for_first_video()
 
     def build_ui_elements(self):
         self.main_layout = QVBoxLayout(self)

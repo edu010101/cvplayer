@@ -1,7 +1,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 import cvplayer.core.utils.widgets_utils as widgets_utils
 import cvplayer.core.utils.video_utils as video_utils
-import cv2
+import cv2, time
 
 class ImageViewer(QtWidgets.QGraphicsView):
     photoClicked = QtCore.pyqtSignal(QtCore.QPoint)
@@ -25,11 +25,12 @@ class ImageViewer(QtWidgets.QGraphicsView):
         self.setBackgroundBrush(QtGui.QBrush(QtGui.QColor(30, 30, 30)))
         self.setFrameShape(QtWidgets.QFrame.Shape.NoFrame  )
         self.change_image_on_viewer.connect(self.setPhoto)
+        self.show_cv2_image(cv2.imread('cvplayer/icons/black.png'))
 
     def show_cv2_image(self, cv2_image):
         self.QPixmap = video_utils.cv2_image_to_QPixmap(cv2_image)
         self.change_image_on_viewer.emit()
-
+    
     def hasPhoto(self):
         return not self._empty
 

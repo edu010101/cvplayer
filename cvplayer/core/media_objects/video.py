@@ -8,6 +8,7 @@ class Video:
     current_frame_id = 0
     current_milliseconds = 0
     current_seconds = 0
+    future_frame_id = 0
     
     def __init__(self, video_path: str, frames_to_jump: int = 1) -> None:
         self.video = cv2.VideoCapture(video_path)
@@ -16,10 +17,10 @@ class Video:
         self.total_number_of_frames = self.get_total_number_of_frames()
 
     def set_current_frame_id(self, frame_id: int) -> None:
-        self.current_frame_id = frame_id
+        self.future_frame_id = frame_id
 
     def set_current_frame_position_by_index(self) -> None:
-        self.video.set(cv2.CAP_PROP_POS_FRAMES, self.current_frame_id)
+        self.video.set(cv2.CAP_PROP_POS_FRAMES, self.future_frame_id)
 
     def set_frames_to_jump(self, frames_to_jump: int) -> None:
         self.frames_to_jump = frames_to_jump
@@ -49,9 +50,14 @@ class Video:
     #Basic a union of the last 3 methods
     def update_to_next_video_moment(self) -> None:
         """Iterates to the next frame and updates the video parameters"""
+        if self.current_frame_id + self.frames_to_jump >= self.total_number_of_frames:
+            self.set_current_frame_id(0)
+            self.update_to_specific_video_moment()
+
         self.update_to_next_frame_based_on_frames_to_jump()
         self.update_current_frame_id()
         self.update_video_time()
+        print('Current frame id: ', self.current_frame_id)
        
     def update_to_specific_video_moment(self) -> None:
         """Iterates to a specifc frame and updates the video parameters"""

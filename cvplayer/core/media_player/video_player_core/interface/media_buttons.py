@@ -11,7 +11,8 @@ class PlayPauseButton(QToolButton):
         widgets_utils.start_widget_basics(self, layout, CSS, fixed_width=X,fixed_height=Y)
         self.video_player = video_player
         self.pressed.connect(self.toggle) 
-        
+        self.video_player.started.connect(self.unlock)
+
     def toggle(self):
         if self.is_paused:
             self.is_paused = False
@@ -32,29 +33,39 @@ class PlayPauseButton(QToolButton):
         self.setIcon(QIcon('cvplayer/icons/play.png'))
         self.setIconSize(self.size())
         self.is_paused = True
+        self.setEnabled(False)
         
-
+    def unlock(self):
+        self.setEnabled(True)
 class NextFrameButton(QPushButton):
     def __init__(self, video_player, layout, CSS ='cvplayer/stylesheets/next_frame_button.css', X=40, Y=40):
         super().__init__()
         self.setShortcut(QKeySequence('Right'))
         widgets_utils.start_widget_basics(self, layout, CSS, fixed_width=X,fixed_height=Y)
+        self.setEnabled(False)
         self.video_player =  video_player
         self.pressed.connect(self.next_frame)
-    
+        self.video_player.started.connect(self.unlock)
+        
     def next_frame(self):
         next_video_frame = self.video_player.video.current_frame_id + 1
         self.video_player.change_frame(next_video_frame)
 
+    def unlock(self):
+        self.setEnabled(True)
 class PreviousFrameButton(QPushButton):
     def __init__(self, video_player, layout, CSS = 'cvplayer/stylesheets/previous_frame_button.css',X=40, Y=40):
         super().__init__()
         self.setShortcut(QKeySequence('Left'))
         widgets_utils.start_widget_basics(self, layout, CSS, fixed_width=X,fixed_height=Y)
         self.video_player = video_player
+        self.setEnabled(False)
         self.pressed.connect(self.previous_frame)
+        self.video_player.started.connect(self.unlock)
     
     def previous_frame(self):
         previous_video_frame = self.video_player.video.current_frame_id - 1
         self.video_player.change_frame(previous_video_frame)
 
+    def unlock(self):
+        self.setEnabled(True)

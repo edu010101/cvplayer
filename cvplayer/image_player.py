@@ -8,6 +8,7 @@ class ImagePlayer():
         image_player = ImagePlayerWidget(custom_class)
         window = QMainWindow()
         window.setStyleSheet('background-color: rgba(31,29,30,255);')
+        window.setMinimumSize(550,400)
         window.setCentralWidget(image_player)
         window.show()
         sys.exit(app.exec())

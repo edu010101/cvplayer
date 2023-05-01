@@ -9,6 +9,7 @@ class VideoPlayer():
         window = QMainWindow()
         window.setStyleSheet('background-color: rgba(31,29,30,255);')
         window.setCentralWidget(video_player)
+        window.setMinimumSize(550,400)
         window.show()
         sys.exit(app.exec())
 

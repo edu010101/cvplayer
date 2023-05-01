@@ -1,9 +1,12 @@
+from PyQt6.QtCore import pyqtSignal, QObject
 from cvplayer.core.updater.video_updater import VideoUpdater
 from cvplayer.core.media_objects.video import Video
 import time
 
-class VideoPlayer():
+class VideoPlayer(QObject):
+    started = pyqtSignal()
     def __init__(self, video: Video = None, custom_class=None) -> None:
+        super().__init__()
         self.video = video
         self.create_video_updater()
         self.current_time = time.time()
@@ -18,7 +21,14 @@ class VideoPlayer():
     def change_frame(self, frame_id : int)-> None:
         if 0 <= frame_id < self.video.total_number_of_frames:
             self.video.set_current_frame_id(frame_id)
-            self.video_updater.start_signal_updater()        
+            self.video_updater.start_signal_updater()    
+
+    def change_frame_for_first_video(self)-> None:
+        self.video.set_current_frame_id(0)
+        self.video.update_to_specific_video_moment()
+        self.show_frame()
+        self.slider.set_range(self.video.total_number_of_frames)
+        self.update_ui_elements()
 
     def change_speed(self, speed: int):
         """speed is a positive integer, 1 is normal speed, 2 is double speed, 3 is triple speed, etc."""

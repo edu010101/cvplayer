@@ -67,19 +67,18 @@ class VideoSlider(QtWidgets.QSlider):
         self.setOrientation(Qt.Orientation.Horizontal)
         widgets_utils.start_widget_basics(self, layout, CSS)
         self.video_player = video_player
-        #self.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         self.set_range(self.video_player.video.total_number_of_frames)
-
+        self.setEnabled(False)
+        self.video_player.started.connect(self.unlock)
 
     def mousePressEvent(self, e):
-        if e.button() == Qt.MouseButton.LeftButton:
-            e.accept()
-            x = e.pos().x()
-            value = (self.maximum() - self.minimum()) * x / self.width() + self.minimum()
-            self.setValue(int(value))
-            self.video_player.change_frame(value) 
-        else:
+        if e.button() != Qt.MouseButton.LeftButton or not self.isEnabled():
             return super().mousePressEvent(self, e)
+        e.accept()
+        x = e.pos().x()
+        value = (self.maximum() - self.minimum()) * x / self.width() + self.minimum()
+        self.setValue(int(value))
+        self.video_player.change_frame(value)
         
     # def mouseReleaseEvent(self, event):
     #     super(VideoSlider, self).mouseReleaseEvent(event)
@@ -94,4 +93,5 @@ class VideoSlider(QtWidgets.QSlider):
     def set_value(self, value):
         self.setValue(int(value))
 
-    # def pixel_pos_to_range_value(self, pos):
+    def unlock(self):
+        self.setEnabled(True)
