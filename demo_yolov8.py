@@ -25,12 +25,3 @@ VideoPlayer(CustomBase()) #pass the class to the VideoPlayer and start the playe
 
 
 
-
-
-
-
-
-
-
-
-

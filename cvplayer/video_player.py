@@ -16,6 +16,7 @@ class VideoPlayer():
         sys.exit(app.exec())
 
 
-        
+
+
     
 
