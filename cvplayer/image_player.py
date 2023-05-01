@@ -5,6 +5,9 @@ import sys
 class ImagePlayer():
     def __init__(self, custom_class) -> None:
         app = QApplication(sys.argv)
+        #check if a method exists in the class
+        if not hasattr(custom_class, 'custom_method') or not callable(getattr(custom_class, 'custom_method')):
+            raise RuntimeError('custom_method not found in the class')
         image_player = ImagePlayerWidget(custom_class)
         window = QMainWindow()
         window.setStyleSheet('background-color: rgba(31,29,30,255);')

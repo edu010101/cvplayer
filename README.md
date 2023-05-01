@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-  Player for computer vision models and their inferences 
+  Universal media player for computer vision models and their inferences 
 </h4>
 <br/>
 
@@ -43,6 +43,9 @@ cd cvplayer
 pip install -e .
 ```
 ## Usage
+
+### Tutorials
+A colab tutorial for getting started with cvplayer [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](tutorial.ipynb)
 
 ### Video Player
 
@@ -92,21 +95,20 @@ from ultralytics import YOLO
 import cv2
 
 #yolov8 example
-class CustomBase(): 
+class Yolov8(): 
     def __init__(self) -> None:
-        self.model = YOLO("/path_to_weights/yolov8s.pt")  # load a pretrained model 
+        self.model = YOLO("yolov8n.pt")  # load a pretrained model 
     
-    def custom_method(self, numpy_image): #method to be called on each frame and do whatever you want
-        results = self.model(numpy_image)  # predict on an image
+    def custom_method(self, image): #method to be called on each frame and do whatever you want
+        results = self.model(image)  # predict on an image
         for result in results:
             boxes = result.boxes  # Boxes object for bbox outputs
             for box in boxes:
-                print(box.xyxy[0][1])
-                cv2.rectangle(numpy_image, (int(box.xyxy[0][0]), int(box.xyxy[0][1])), (int(box.xyxy[0][2]), int(box.xyxy[0][3])), (0, 255, 0), 2)
+                cv2.rectangle(image, (int(box.xyxy[0][0]), int(box.xyxy[0][1])), (int(box.xyxy[0][2]), int(box.xyxy[0][3])), (0, 255, 0), 2)
         
-        return numpy_image #return the image with the changes
+        return image #return the image with the changes
     
-VideoPlayer(CustomBase()) #pass the class to the VideoPlayer and start the player
+VideoPlayer(Yolov8()) #pass the class to the VideoPlayer and start the player
 ```
 
 ### mmdetection demo
@@ -117,17 +119,15 @@ from mmdet.apis import inference_detector, init_detector
 
 #mmdectection example
 class FasterRCNN():
-    def __init__(self) -> None:
-        DetectionModelConfig='/path_to_config/faster_rcnn_r50_fpn_1x_placas.py'
-        DetectionModelWeights='/path_to_weights/epoch_50.pth'
-        self.SignDetectionModel = init_detector(DetectionModelConfig, DetectionModelWeights, device='cuda:0')
+    def __init__(self) -> None: #always load the model in the constructor
+        model_config='your_path_to_config/faster_rcnn_r50_fpn_1x.py' #you can use any model from mmdetection
+        model_weights='your_path_to_weights/epoch_50.pth' 
+        self.detection_model = init_detector(model_config, model_weights, device='cuda:0')
         
     def custom_method(self, numpy_image):
-        detection_result = inference_detector(self.SignDetectionModel, numpy_image)
-        print(detection_result)
-        return self.SignDetectionModel.show_result(
-            numpy_image, detection_result, score_thr=0.7, show=False
-        )
+        detection_result = inference_detector(self.detection_model, numpy_image)
+        return self.detection_model.show_result(numpy_image, detection_result, score_thr=0.7, show=False)
 
-VideoPlayer(FasterRCNN())
+ImagePlayer(FasterRCNN()) #pass the class to the ImagePlayer and start the player
+
 ```
