@@ -7,7 +7,7 @@
 </h4>
 <br/>
 
-<img src="cvplayer/icons/example.png" width="19%" /> <video loop src="cvplayer/icons/example2.mp4" width="19%" /> <video loop src="cvplayer/icons/example3.mp4" width="19%" /> <img src="cvplayer/icons/example4.png" width="19%" /> <img src="cvplayer/icons/example5.png" width="19%" />  
+<img src="cvplayer/icons/example.png" width="19%" /> <img src="cvplayer/icons/example2.png" width="19%" /> <img src="cvplayer/icons/example3.png" width="19%" /> <img src="cvplayer/icons/example4.png" width="19%" /> <img src="cvplayer/icons/example5.png" width="19%" />  
 <i>Examples of the video and image player with detection and segmentation models</i>
 
 <div align="center">
