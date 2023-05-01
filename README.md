@@ -18,6 +18,7 @@ Welcome to **CVPlayer**, a powerful and easy to use tool for visualizing compute
 ## Features
 - [x] Video inference visualization.
 - [x] Images inference visualization.
+- [x] Compatible with any computer vision framework.
 - [x] Frame level control.
 - [x] Easy to use.
 - [ ] Portable for PyQt6 aplications.
@@ -56,6 +57,7 @@ from cvplayer import VideoPlayer
 class ExampleName():
     def __init___(self): #it can have many args as you need
         #initialize your model
+        self.model = 'path/to/your/model'
     
     #your class NEED to have this method with this exactly name.
     def custom_method(self, numpy_image): #this method can have just the np.array parameter
@@ -75,6 +77,7 @@ from cvplayer import ImagePlayer
 class ExampleClass():
     def __init___(self): #it can have many args as you need
         #initialize your model
+        self.model = 'path/to/your/model'
     
     #your class NEED to have this method with this exactly name.
     def custom_method(self, numpy_image):
