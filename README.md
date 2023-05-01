@@ -13,7 +13,8 @@
 
 ## Description
 
-Welcome to **CVPlayer**, a powerful and easy to use tool for visualizing computer vision models and their inferences. With CVPlayer, you can easily view and analyze the output of your models, no mather wich library or framework you are using, saving you from long codes for a simple inference visualization.
+Welcome to **CVPlayer**, a powerful and easy to use tool for visualizing computer vision models inferences.  
+Tired of writing long codes just to visualize your model's output? With CVPlayer, you can easily analyze the output of your models with just a few lines of code, no mather wich library or framework you are using, saving you from long codes for a simple inference visualization and ofering you an a lot better experience over the traditional way of doing it.
 
 ## Features
 - [x] Video inference visualization.
