@@ -3,7 +3,7 @@ from PIL import ImageQt
 import cvplayer.core.utils.widgets_utils as widgets_utils
 
 class PrintScreenButton(QPushButton):
-    def __init__(self, widget_to_print, video_player, layout, CSS='cvplayer/stylesheets/print_screen_button.css', tool_tip='Captura de tela', X=30, Y=30) -> None:
+    def __init__(self, widget_to_print, video_player, layout, CSS='stylesheets/print_screen_button.css', tool_tip='Captura de tela', X=30, Y=30) -> None:
         super().__init__()
         widgets_utils.start_widget_basics(self, layout, CSS, tool_tip, fixed_width=X, fixed_height=Y)
         self.video_player = video_player

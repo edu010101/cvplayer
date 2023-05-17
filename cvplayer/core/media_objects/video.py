@@ -57,7 +57,7 @@ class Video:
         self.update_to_next_frame_based_on_frames_to_jump()
         self.update_current_frame_id()
         self.update_video_time()
-        print('Current frame id: ', self.current_frame_id)
+        # print('Current frame id: ', self.current_frame_id)
        
     def update_to_specific_video_moment(self) -> None:
         """Iterates to a specifc frame and updates the video parameters"""

@@ -1,0 +1,20 @@
+QSlider::sub-page:Horizontal { 
+	background-color: #99eef1; }
+	
+
+QSlider::add-page:Horizontal { 
+	background-color: #333333; }
+
+QSlider::groove:Horizontal { 
+	background: transparent; 
+	height:4px; }
+
+QSlider::handle:Horizontal { 
+	width:10px; 
+	border-radius:5px; 
+	background:#898989; 
+	margin: -5px 0px -5px 0px; }
+
+
+QSlider { 
+	background-color: rgba(0,0,0,0%); }

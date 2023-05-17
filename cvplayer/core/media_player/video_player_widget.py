@@ -3,13 +3,14 @@ from cvplayer.core.media_player.video_player_core.interface import *
 from cvplayer.core.media_objects.video import Video
 from cvplayer.core.media_player.video_player_core.back_end.video_player import VideoPlayer
 from cvplayer.core.utils.widgets_utils import start_widget_basics
-
+import os
+from pkg_resources import resource_filename
 
 class VideoPlayerWidget(QWidget):
     def __init__(self, custom_class) -> None:
         super().__init__()
-        start_widget_basics(self, None, 'cvplayer/stylesheets/video_player_widget.css', minimum_height=300, minimum_width=300)
-        self.video = Video('cvplayer/core/utils/default.mp4')
+        start_widget_basics(self, None, 'stylesheets/video_player_widget.css', minimum_height=300, minimum_width=300)
+        self.video = Video(resource_filename(__name__, 'default.mp4'))
         self.custom_class = custom_class
         self.video_player = VideoPlayer(self.video, self.custom_class)
         self.build_ui_elements()

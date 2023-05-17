@@ -62,7 +62,7 @@ import cvplayer.core.utils.widgets_utils as widgets_utils
 #His StackOverflow account -> https://stackoverflow.com/users/6622587/eyllanesc
 
 class VideoSlider(QtWidgets.QSlider):
-    def __init__(self, video_player, layout ,CSS='cvplayer/stylesheets/video_slider.css'):
+    def __init__(self, video_player, layout ,CSS='stylesheets/video_slider.css'):
         super().__init__()
         self.setOrientation(Qt.Orientation.Horizontal)
         widgets_utils.start_widget_basics(self, layout, CSS)

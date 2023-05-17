@@ -1,0 +1,21 @@
+QSpinBox {
+    border-radius: 10px;
+    background-color: rgb(31, 29, 30);
+	color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 0px 5px 0px;
+
+	
+}
+
+/* background color when line edit is selected */
+
+QSpinBox::up-button {
+    width: 0px;
+}
+
+QSpinBox::down-button {
+    width: 0px;
+}
+

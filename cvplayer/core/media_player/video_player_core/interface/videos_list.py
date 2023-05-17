@@ -2,15 +2,17 @@ from PyQt6.QtWidgets import QComboBox
 from cvplayer.core.utils.widgets_utils import start_widget_basics
 from cvplayer.core.media_objects.video import Video
 import os
+from pkg_resources import resource_filename
 
 class VideosList(QComboBox):
     videos_dict = {}
     current_video_path = None
     video_player = None
     started = False
-    def __init__(self, video_player, layout, css_path='cvplayer/stylesheets/videos_list.css',X=350,Y=40) -> None:
+    def __init__(self, video_player, layout,X=350,Y=40) -> None:
         super().__init__()
-        start_widget_basics(self, layout, css_path, fixed_height=Y)
+        start_widget_basics(self, layout, fixed_height=Y)
+        self.set_css()
         self.video_player = video_player
         self.setInsertPolicy(QComboBox.InsertPolicy.NoInsert)
         self.setMinimumWidth(X)
@@ -33,3 +35,57 @@ class VideosList(QComboBox):
             raise FileNotFoundError("Video path not found")
         elif os.path.isfile(video_path):
             self.videos_list = [video_path]
+
+    def set_css(self):
+        css_str = """
+        QComboBox {
+            border-radius: 7px;
+            color: lightgray;
+            background-color: #333333;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            min-width: 350px;
+            max-width: 350px;
+        }
+        QComboBox::hover{
+
+            background-color:  #4e5050;
+            border-radius: 5px;
+        }
+        QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+            background: #4e5050;
+        }
+        QComboBox::drop-down {
+            subcontrol-origin: padding;
+            subcontrol-position: top right;
+            width: 30px;
+            border-bottom-right-radius: 3px;
+            border-radius: 5px;
+        }
+        QComboBox::down-arrow {
+            image: url(""" + resource_filename(__name__, 'icons/drop_down.png') + """);
+            height: 15px;
+            width: 15px;
+        } 
+        QComboBox QAbstractItemView {
+            border-radius: 5px;
+            selection-color: #4e5050;
+            selection-background-color: #4e5050;
+            color: rgba(91,91,91,255);
+            background-color: #4e5050;
+            outline: 0px;
+            font-size: 12pt;
+            font-weight: 400;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        QListView::item {
+            height:40px;
+            outline: 0px;
+        }
+        QListView::item:selected {
+            background-color: #4e5050;
+            outline: 0px;
+        }
+        QScrollBar{
+            width:0px;
+        }"""
+        self.setStyleSheet(css_str)

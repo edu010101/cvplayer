@@ -5,7 +5,7 @@ import cvplayer.core.utils.widgets_utils as widgets_utils
 from PyQt6.QtGui import QKeySequence
 
 class VideoSpeedButton(QSpinBox):
-    def __init__(self, video_player, layout, CSS='cvplayer/stylesheets/video_speed_button.css'):
+    def __init__(self, video_player, layout, CSS='stylesheets/video_speed_button.css'):
         super().__init__()
         widgets_utils.start_widget_basics(self, layout, CSS, tool_tip='Change video speed by pressing up and down arrows')
         self.setSuffix(' x')

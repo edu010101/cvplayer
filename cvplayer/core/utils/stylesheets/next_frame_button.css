@@ -1,0 +1,10 @@
+QPushButton{
+    border-image: url('cvplayer/icons/next.png');
+    background:transparent;    
+}
+QPushButton:hover {
+    background-color: rgba(206, 197, 197, 0.21);
+}
+QPushButton:pressed{
+    background-color: rgba(132, 129, 129, 0.264);
+}

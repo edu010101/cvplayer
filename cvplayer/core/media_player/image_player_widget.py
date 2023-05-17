@@ -8,7 +8,7 @@ import cv2
 class ImagePlayerWidget(QWidget):
     def __init__(self, custom_class) -> None:
         super().__init__()
-        start_widget_basics(self, None, 'cvplayer/stylesheets/image_player_widget.css', minimum_height=300, minimum_width=300)
+        start_widget_basics(self, None, 'stylesheets/image_player_widget.css', minimum_height=300, minimum_width=300)
         self.custom_class = custom_class
         self.image_viewer = ImageViewer()
         self.image_player = ImagePlayer(self.image_viewer, self.custom_class.custom_method)

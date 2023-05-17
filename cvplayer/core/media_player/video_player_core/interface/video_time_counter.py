@@ -3,7 +3,7 @@ from cvplayer.core.utils.time_and_date_utils import milliseconds_to_counter_time
 from cvplayer.core.utils.widgets_utils import start_widget_basics
 
 class TimeCounter(QLabel):
-    def __init__(self, video_player, layout, CSS='cvplayer/stylesheets/video_time_counter.css'):
+    def __init__(self, video_player, layout, CSS='stylesheets/video_time_counter.css'):
         super().__init__()
         self.video_player = video_player
         start_widget_basics(self, layout, CSS)

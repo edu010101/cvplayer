@@ -1,0 +1,20 @@
+QPushButton {
+    background-color: transparent;
+    border-radius: 10px;
+    border-image: url('cvplayer/icons/add.png');
+    max-width: 50px;
+    max-height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    margin: 0%;
+    padding: 0%;
+    border: 0px;
+}
+QPushButton:hover {
+    border-image: url('cvplayer/icons/add_hover.png');    
+}
+QPushButton:pressed {
+    border-image: url('cvplayer/icons/add_pressed.png');
+}
+
+
