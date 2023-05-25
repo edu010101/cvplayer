@@ -34,7 +34,10 @@ Tired of writing long codes just to visualize your model's output? With CVPlayer
 pip install PyQt6==6.4.2 PyQt6-Qt6==6.4.2 PyQt6-sip==13.4.1
 pip install opencv-python
 pip install pillow
-```
+
+# or
+pip install -r requirements.txt
+
 ## Instalation
 
 ```bash
