@@ -37,6 +37,7 @@ pip install pillow
 
 # or
 pip install -r requirements.txt
+```
 
 ## Instalation
 
