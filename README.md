@@ -49,10 +49,10 @@ pip install -e .
 A colab tutorial for getting started with cvplayer [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](tutorial.ipynb)
 
 ### Controls
-Play/Pause: Space Bar (⎵)
-Next Frame/Image: Right Key (→)
-Previous Frame/Image: Left Key (←) 
-Change Video Speed: Up and Down Keys (↑,↓) 
+-Play/Pause: Space Bar (⎵)
+-Next Frame/Image: Right Key (→)
+-Previous Frame/Image: Left Key (←) 
+-Change Video Speed: Up and Down Keys (↑,↓) 
 
 ### Video Player
 
