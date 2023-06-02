@@ -7,13 +7,15 @@
 </h4>
 <br/>
 
-<img src="cvplayer/icons/example.png" width="19%" /> <img src="cvplayer/icons/example2.png" width="19%" /> <img src="cvplayer/icons/example3.png" width="19%" /> <img src="cvplayer/icons/example4.png" width="19%" /> <img src="cvplayer/icons/example5.png" width="19%" />  
+<img src="cvplayer/icons/example2.png" width="24%" /> <img src="cvplayer/icons/example3.png" width="24%" /> <img src="cvplayer/icons/example4.png" width="24%" /> <img src="cvplayer/icons/example5.png" width="24%" />  
 <i>Examples of the video and image player with detection and segmentation models</i>
 
 ## Description
 
 Welcome to **CVPlayer**, a powerful and easy to use tool for visualizing computer vision models inferences.  
 Tired of writing long codes just to visualize your model's output? With CVPlayer, you can easily analyze the output of your models with just a few lines of code, no mather wich library or framework you are using, saving you from long codes for a simple inference visualization and ofering you an a lot better experience over the traditional way of doing it.
+
+<img src="cvplayer/icons/example.png" width="50%" />
 
 ## Features
 - [x] Video inference visualization.
