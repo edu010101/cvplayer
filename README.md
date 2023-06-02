@@ -34,9 +34,6 @@ Tired of writing long codes just to visualize your model's output? With CVPlayer
 pip install PyQt6==6.4.2 PyQt6-Qt6==6.4.2 PyQt6-sip==13.4.1
 pip install opencv-python
 pip install pillow
-
-# or
-pip install -r requirements.txt
 ```
 
 ## Instalation
@@ -78,27 +75,6 @@ class ExampleName():
 
 VideoPlayer(ExampleName()) #load your class as an argument to the player
 ```
-### Image Player
-
-```python
-from cvplayer import ImagePlayer
-
-#create a class with any name
-class ExampleClass():
-    def __init___(self): #it can have many args as you need
-        #initialize your model
-        self.model = 'path/to/your/model'
-    
-    #your class NEED to have this method with this exactly name.
-    def custom_method(self, numpy_image):
-      	#this method receives an np.array representing your image or frame
-      	#modify and inference your array as you want
-	
-    	return numpy_image  #then return your modified np.array
-
-imageclassifier = ExampleClass()
-ImagePlayer(imageclassifier) #load your class as an argument to the player
-```
 
 ### Yolov8 demo
 
@@ -124,10 +100,32 @@ class Yolov8():
 VideoPlayer(Yolov8()) #pass the class to the VideoPlayer and start the player
 ```
 
+### Image Player
+
+```python
+from cvplayer import ImagePlayer
+
+#create a class with any name
+class ExampleClass():
+    def __init___(self): #it can have many args as you need
+        #initialize your model
+        self.model = 'path/to/your/model'
+    
+    #your class NEED to have this method with this exactly name.
+    def custom_method(self, numpy_image):
+      	#this method receives an np.array representing your image or frame
+      	#modify and inference your array as you want
+	
+    	return numpy_image  #then return your modified np.array
+
+imageclassifier = ExampleClass()
+ImagePlayer(imageclassifier) #load your class as an argument to the player
+```
+
 ### mmdetection demo
 
 ```python
-from cvplayer import VideoPlayer
+from cvplayer import ImagePlayer
 from mmdet.apis import inference_detector, init_detector
 
 #mmdectection example

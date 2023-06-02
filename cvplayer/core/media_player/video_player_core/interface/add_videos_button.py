@@ -17,9 +17,9 @@ class AddVideosButton(QPushButton):
             self.videos_list.add_videos(mp4_files)
 
     def set_css(self):
-        add_icon_path = resource_filename(__name__, 'icons/add.png')
-        hover_icon_path = resource_filename(__name__, 'icons/add_hover.png')
-        pressed_icon_path = resource_filename(__name__, 'icons/add_pressed.png')
+        add_icon_path = resource_filename(__name__, 'icons/add.png').replace('\\', '/')
+        hover_icon_path = resource_filename(__name__, 'icons/add_hover.png').replace('\\', '/')
+        pressed_icon_path = resource_filename(__name__, 'icons/add_pressed.png').replace('\\', '/')
         css_str = f"""
         QPushButton {{
             background-color: transparent;

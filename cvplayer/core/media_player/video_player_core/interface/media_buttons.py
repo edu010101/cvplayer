@@ -58,17 +58,18 @@ class NextFrameButton(QPushButton):
         self.setEnabled(True)
 
     def set_css(self):
-        css_string = f"""
-        QPushButton{{
-            border-image: url({resource_filename(__name__, 'icons/next.png')});
+        image_path = resource_filename(__name__, 'icons/next.png').replace("\\", "/")
+        css_string = """
+        QPushButton{
+            border-image: url("""+image_path+""");
             background:transparent;    
-        }}
-        QPushButton:hover {{
+        }
+        QPushButton:hover {
             background-color: rgba(206, 197, 197, 0.21);
-        }}
-        QPushButton:pressed{{
+        }
+        QPushButton:pressed{
             background-color: rgba(132, 129, 129, 0.264);
-        }} """
+        } """
         self.setStyleSheet(css_string)
 class PreviousFrameButton(QPushButton):
     def __init__(self, video_player, layout, CSS = 'stylesheets/previous_frame_button.css',X=40, Y=40):
@@ -89,15 +90,16 @@ class PreviousFrameButton(QPushButton):
         self.setEnabled(True)
 
     def set_css(self):
-        css_string = f"""
-        QPushButton{{
-            border-image: url({resource_filename(__name__, 'icons/previous.png')});
+        image_path = resource_filename(__name__, 'icons/previous.png').replace("\\", "/")
+        css_string = """
+        QPushButton{
+            border-image: url("""+image_path+""");
             background:transparent;    
-        }}
-        QPushButton:hover {{
+        }
+        QPushButton:hover {
             background-color: rgba(206, 197, 197, 0.21);
-        }}
-        QPushButton:pressed{{
+        }
+        QPushButton:pressed{
             background-color: rgba(132, 129, 129, 0.264);
-        }} """
+        } """
         self.setStyleSheet(css_string)

@@ -64,7 +64,7 @@ class ImagesList(QComboBox):
             border-radius: 5px;
         }
         QComboBox::down-arrow {
-            image: url(""" + resource_filename(__name__, 'icons/drop_down.png') + """);
+            image: url(""" + resource_filename(__name__, 'icons/drop_down.png').replace("\\", "/") + """);
             height: 15px;
             width: 15px;
         } 

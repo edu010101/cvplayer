@@ -18,7 +18,7 @@ class NextImageButton(QPushButton):
     def set_css(self):
         css_str = """
         QPushButton{
-            border-image: url("""+ resource_filename(__name__, 'icons/next2.png') +""");
+            border-image: url("""+ resource_filename(__name__, 'icons/next2.png').replace("\\", "/") +""");
             background:transparent;       
             border-radius: 10px;
             border: none;
@@ -49,7 +49,7 @@ class PreviousImageButton(QPushButton):
     def set_css(self):
         css_str = """
         QPushButton{
-            border-image: url("""+ resource_filename(__name__, 'icons/previous2.png') +""");
+            border-image: url("""+ resource_filename(__name__, 'icons/previous2.png').replace("\\", "/") +""");
             background:transparent;       
             border-radius: 10px;
             border: none;

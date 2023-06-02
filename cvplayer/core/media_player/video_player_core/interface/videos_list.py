@@ -37,6 +37,7 @@ class VideosList(QComboBox):
             self.videos_list = [video_path]
 
     def set_css(self):
+        image_path = resource_filename(__name__, 'icons/drop_down.png').replace("\\", "/")
         css_str = """
         QComboBox {
             border-radius: 7px;
@@ -62,7 +63,7 @@ class VideosList(QComboBox):
             border-radius: 5px;
         }
         QComboBox::down-arrow {
-            image: url(""" + resource_filename(__name__, 'icons/drop_down.png') + """);
+            image: url(""" + image_path + """);
             height: 15px;
             width: 15px;
         } 
